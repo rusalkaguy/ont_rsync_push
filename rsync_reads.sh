@@ -9,7 +9,8 @@ RSYNC_ARGS="$*"
 #
 MAKEFILE="/data/user_scripts/Makefile"
 MD5SUM="md5sum"
-MD5SUM_CORES=6
+# use only 1 core, unless we know there is nothing running and can be greedier
+MD5SUM_CORES=1  
 DONE="rsync.done"
 
 if [[ -z "$SRCDIR" || -z "$DESTDIR" ]]; then 
