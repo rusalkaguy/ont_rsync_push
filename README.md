@@ -1,4 +1,4 @@
-# ont_auto_rsync
+# ont_rsync_push
 Automatically rsync ONT sequencing data on a Mk1c or similar sequencing host to the HPC cluster
 
 This repo is expected to be cloned into MK1C:/data/user-scripts
