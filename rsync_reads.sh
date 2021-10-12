@@ -28,7 +28,8 @@ fi
 #
 # constants
 #
-MAKEFILE="/data/user_scripts/Makefile"
+# Makefile is in the same dir as this script
+MAKEFILE="$(dirname $0)/Makefile"
 # make target and file name for combined run md5sums
 MD5SUM="md5sum"
 # use only 1 core, unless we know there is nothing running and can be greedier
@@ -77,8 +78,8 @@ for src in $SEQ_RUNS; do
 	# rsync 
 	#
 	echo "## rsync in $srcd"
-	echo rsync $RSYNC_ARGS -hav --partial --relative --exclude "**/.md5" $srcd "$DESTDIR"
-	rsync $RSYNC_ARGS -hav --partial --relative --exclude "**/*.md5" $srcd "$DESTDIR"
+	echo rsync $RSYNC_ARGS -hav --partial --relative --exclude "**/.md5" --exclude "devices "$srcd "$DESTDIR"
+	rsync $RSYNC_ARGS -hav --partial --relative --exclude "**/*.md5" --exclude "devices" $srcd "$DESTDIR"
 	RSYNC_RC=$?
 	#
 	# is that run completely xfered? 
