@@ -26,3 +26,11 @@ This repo is expected to be cloned into MK1C:/data/user-scripts
    * target: "md5sum" 
       * computes .md5 files for sequencing and metadata files
       * creates roll-up "md5sum" 
+
+# Thoughts pull vs push
+
+If I had time to re-write this from scratch, I would change the paradigm and have the cluster pull from the sequencer, or a hybrid model that computes md5s on the sequencer, then a cluster-based pull process that pulls over all file with md5 sums. 
+
+I find the pull approach superior because:  
+* security: would be a much simpler, and more robust, security setup (the current script requires the minuit account to be able to rsync to my account on the cluster, which is done with a public/private key pair plus an ssh authorization script).
+* email: it would allow the system to send email when a sequencing run is completely transferred, or if an problem was encountered, such as the sequencer going off line. It is not easy to send email from the sequencer, though I’m sure that could be set up, and would not work for reporting when the sequencer goes off-line. 
