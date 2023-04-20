@@ -43,7 +43,7 @@ SKIP="rsync.skip"
 # find sequencing runs
 #
 pushd $SRCDIR > /dev/null
-SEQ_RUNS=$(find . -type d -name "fast5_fail" )
+SEQ_RUNS=$(find . -type d -name "fast5*"  | grep -v /tmp/ )
 for src in $SEQ_RUNS; do
 	srcd=$(dirname $src)
 	echo -e "\n\n##### checking $srcd ######"

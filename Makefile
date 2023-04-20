@@ -8,7 +8,7 @@
 	md5sum $< > $@
 
 # list all the files of interest
-FILES := $(wildcard *.txt *.pdf *.md *.csv fast?_????/*.fast? fast?_????/*.fast?.gz)
+FILES := $(wildcard *.txt *.pdf *.md *.csv fast5/*.fast5 fast?_????/*.fast? fast?_????/*.fast?.gz)
 # add .md5 to each 
 MD5S  := $(addsuffix .md5,$(FILES))
 
