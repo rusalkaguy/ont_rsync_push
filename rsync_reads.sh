@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# scan for sequencing results
+# compute md5 checksums
+# rsync to remote storage
+#
+# # 20230625 curtish; add pod5 support
+
 
 # set debug to "yes" for more logging
 VERBOSE=
@@ -43,7 +50,7 @@ SKIP="rsync.skip"
 # find sequencing runs
 #
 pushd $SRCDIR > /dev/null
-SEQ_RUNS=$(find . -type d -name "fast5*"  | grep -v /tmp/ )
+SEQ_RUNS=$(find . -type d -name "fast5*" -o -name "pod5*" -o -name "fastq*" | grep -v /tmp/ )
 for src in $SEQ_RUNS; do
 	srcd=$(dirname $src)
 	echo -e "\n\n##### checking $srcd ######"
